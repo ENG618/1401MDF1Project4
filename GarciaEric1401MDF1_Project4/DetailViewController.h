@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DetailViewController.h
 //  GarciaEric1401MDF1_Project4
 //
 //  Created by Eric Garcia on 1/28/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface DetailViewController : UIViewController
 
 @end
