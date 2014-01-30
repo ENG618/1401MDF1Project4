@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Listings.h"
 
-@interface HomesViewController : UITableViewController <NSURLConnectionDataDelegate>
+@interface HomesViewController : UITableViewController <NSURLConnectionDataDelegate, NSXMLParserDelegate>
 {
     NSURLRequest *request;
     NSURL *url;

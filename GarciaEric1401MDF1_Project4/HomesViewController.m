@@ -6,6 +6,13 @@
 //  Copyright (c) 2014 Full Sail. All rights reserved.
 //
 
+/*
+ API Key:
+ q948yz3we6b6nbrneghkww55
+ Static url:
+ http://api.trulia.com/webservices.php?library=LocationInfo&function=getCitiesInState&state=FL&apikey=q948yz3we6b6nbrneghkww55
+*/
+
 #import "HomesViewController.h"
 
 @interface HomesViewController ()
@@ -26,19 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*
-    houseListings = [[NSMutableArray alloc] init];
-    
-    Listings *listItem1 = [[Listings alloc] init];
-    listItem1.url = @"some text";
-    
-    // http://api.trulia.com/webservices.php?library=TruliaStats&function=getZipCodeStats&zipCode=94002&startDate=2009-02-06&endDate=2009-02-07&statType=listings&apikey=q948yz3we6b6nbrneghkww55
-    
-    //Add to array
-    [houseListings addObject:listItem1];
-    */
-    
-    
+
     //Create URL
     url = [[NSURL alloc] initWithString:@"http://api.trulia.com/webservices.php?library=LocationInfo&function=getCitiesInState&state=FL&apikey=q948yz3we6b6nbrneghkww55"];
     
@@ -52,6 +47,15 @@
         //Create mutableData object
         listingData = [NSMutableData data];
     }
+    
+    //Creating the parser
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:listingData];
+    if (parser) {
+        
+        [parser setDelegate:self];
+        [parser parse];
+    }
+    
     
     
     
@@ -87,8 +91,21 @@
             }
         }
         
+        //Creating the parser
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:listingData];
+        if (parser) {
+            
+            [parser setDelegate:self];
+            [parser parse];
+        }
+        
         NSLog(@"The XML data is %@", requestString);
     }
+    
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
+{
     
 }
 
