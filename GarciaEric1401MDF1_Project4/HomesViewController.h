@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Listings.h"
 
-@interface HomesViewController : UITableViewController
+@interface HomesViewController : UITableViewController <NSURLConnectionDataDelegate>
+{
+    NSURLRequest *request;
+    NSURL *url;
+    NSURLConnection *connection;
+    
+    //Data recieved from api
+    NSMutableData *listingData;
+    //Array of objects after parsing
+    NSMutableArray *cities;
+}
 
 @end

@@ -26,12 +26,70 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    /*
+    houseListings = [[NSMutableArray alloc] init];
+    
+    Listings *listItem1 = [[Listings alloc] init];
+    listItem1.url = @"some text";
+    
+    // http://api.trulia.com/webservices.php?library=TruliaStats&function=getZipCodeStats&zipCode=94002&startDate=2009-02-06&endDate=2009-02-07&statType=listings&apikey=q948yz3we6b6nbrneghkww55
+    
+    //Add to array
+    [houseListings addObject:listItem1];
+    */
+    
+    
+    //Create URL
+    url = [[NSURL alloc] initWithString:@"http://api.trulia.com/webservices.php?library=LocationInfo&function=getCitiesInState&state=FL&apikey=q948yz3we6b6nbrneghkww55"];
+    
+    //Request data from page
+    request = [[NSURLRequest alloc] initWithURL:url];
+    if (request != nil) {
+        
+        //Reciving responce from server
+        connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        //Create mutableData object
+        listingData = [NSMutableData data];
+    }
+    
+    
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    if (data != nil) {
+        
+        // Append data to existing listingData
+        [listingData appendData:data];
+    }
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *requestString = [[NSString alloc] initWithData:listingData encoding:NSASCIIStringEncoding];
+    if (requestString != nil) {
+        
+        //Obtaining documents directory
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        if (documentsDirectory != nil) {
+            NSString *fullpath = [[NSString alloc] initWithFormat:@"%@/%@", documentsDirectory, @"cities.xml"];
+            if (fullpath != nil) {
+                [listingData writeToFile:fullpath atomically:YES];
+            }
+        }
+        
+        NSLog(@"The XML data is %@", requestString);
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,9 +102,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

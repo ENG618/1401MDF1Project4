@@ -24,6 +24,7 @@
 		5CA906D61898B69500933025 /* RawXMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906D51898B69500933025 /* RawXMLViewController.m */; };
 		5CA906D91898BA6000933025 /* HomesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906D81898BA6000933025 /* HomesViewController.m */; };
 		5CA906DC1898BA7400933025 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906DB1898BA7400933025 /* DetailViewController.m */; };
+		5CA906E11899FFB000933025 /* Listings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906E01899FFB000933025 /* Listings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		5CA906D81898BA6000933025 /* HomesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomesViewController.m; sourceTree = "<group>"; };
 		5CA906DA1898BA7400933025 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		5CA906DB1898BA7400933025 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		5CA906DF1899FFB000933025 /* Listings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listings.h; sourceTree = "<group>"; };
+		5CA906E01899FFB000933025 /* Listings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Listings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,14 +125,12 @@
 			children = (
 				5CA906AB1898B4AB00933025 /* AppDelegate.h */,
 				5CA906AC1898B4AB00933025 /* AppDelegate.m */,
-				5CA906D71898BA6000933025 /* HomesViewController.h */,
-				5CA906D81898BA6000933025 /* HomesViewController.m */,
-				5CA906DA1898BA7400933025 /* DetailViewController.h */,
-				5CA906DB1898BA7400933025 /* DetailViewController.m */,
-				5CA906D41898B69500933025 /* RawXMLViewController.h */,
-				5CA906D51898B69500933025 /* RawXMLViewController.m */,
+				5CA906DD1899FDD500933025 /* House listings */,
+				5CA906DE1899FDFE00933025 /* Raw XML */,
 				5CA906AE1898B4AB00933025 /* Main_iPhone.storyboard */,
 				5CA906B11898B4AB00933025 /* Main_iPad.storyboard */,
+				5CA906DF1899FFB000933025 /* Listings.h */,
+				5CA906E01899FFB000933025 /* Listings.m */,
 				5CA906B71898B4AB00933025 /* Images.xcassets */,
 				5CA906A31898B4AB00933025 /* Supporting Files */,
 			);
@@ -163,6 +164,26 @@
 				5CA906C71898B4AB00933025 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5CA906DD1899FDD500933025 /* House listings */ = {
+			isa = PBXGroup;
+			children = (
+				5CA906D71898BA6000933025 /* HomesViewController.h */,
+				5CA906D81898BA6000933025 /* HomesViewController.m */,
+				5CA906DA1898BA7400933025 /* DetailViewController.h */,
+				5CA906DB1898BA7400933025 /* DetailViewController.m */,
+			);
+			name = "House listings";
+			sourceTree = "<group>";
+		};
+		5CA906DE1899FDFE00933025 /* Raw XML */ = {
+			isa = PBXGroup;
+			children = (
+				5CA906D41898B69500933025 /* RawXMLViewController.h */,
+				5CA906D51898B69500933025 /* RawXMLViewController.m */,
+			);
+			name = "Raw XML";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CA906E11899FFB000933025 /* Listings.m in Sources */,
 				5CA906DC1898BA7400933025 /* DetailViewController.m in Sources */,
 				5CA906AD1898B4AB00933025 /* AppDelegate.m in Sources */,
 				5CA906A91898B4AB00933025 /* main.m in Sources */,
