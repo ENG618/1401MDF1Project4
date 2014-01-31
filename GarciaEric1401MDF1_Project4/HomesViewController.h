@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Listings.h"
+#import "XMLManager.h"
+#import "CityInfo.h"
 
 @interface HomesViewController : UITableViewController <NSURLConnectionDataDelegate, NSXMLParserDelegate>
 {

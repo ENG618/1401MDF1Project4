@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Listings.h"
 
 @interface RawXMLViewController : UIViewController
 {

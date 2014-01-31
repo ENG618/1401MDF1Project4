@@ -31,7 +31,7 @@
     NSString *requestString = [[NSString alloc] initWithData:listingData encoding:NSASCIIStringEncoding];
     if (requestString != nil) {
         //Write XML string to console
-        myTextView.text = requestString;
+        myTextView.text = @"Hello World!";
     }
 }
 

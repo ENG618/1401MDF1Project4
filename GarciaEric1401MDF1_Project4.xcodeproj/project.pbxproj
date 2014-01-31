@@ -24,8 +24,9 @@
 		5CA906D61898B69500933025 /* RawXMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906D51898B69500933025 /* RawXMLViewController.m */; };
 		5CA906D91898BA6000933025 /* HomesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906D81898BA6000933025 /* HomesViewController.m */; };
 		5CA906DC1898BA7400933025 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906DB1898BA7400933025 /* DetailViewController.m */; };
-		5CA906E11899FFB000933025 /* Listings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906E01899FFB000933025 /* Listings.m */; };
 		5CA906F0189B396300933025 /* WebXMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906EF189B396300933025 /* WebXMLViewController.m */; };
+		5CE08A46189B65C7006C03B9 /* XMLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE08A45189B65C7006C03B9 /* XMLManager.m */; };
+		5CE08A49189B6A80006C03B9 /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE08A48189B6A80006C03B9 /* CityInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,10 +64,12 @@
 		5CA906D81898BA6000933025 /* HomesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomesViewController.m; sourceTree = "<group>"; };
 		5CA906DA1898BA7400933025 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		5CA906DB1898BA7400933025 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		5CA906DF1899FFB000933025 /* Listings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listings.h; sourceTree = "<group>"; };
-		5CA906E01899FFB000933025 /* Listings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Listings.m; sourceTree = "<group>"; };
 		5CA906EE189B396300933025 /* WebXMLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebXMLViewController.h; sourceTree = "<group>"; };
 		5CA906EF189B396300933025 /* WebXMLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebXMLViewController.m; sourceTree = "<group>"; };
+		5CE08A44189B65C7006C03B9 /* XMLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLManager.h; sourceTree = "<group>"; };
+		5CE08A45189B65C7006C03B9 /* XMLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLManager.m; sourceTree = "<group>"; };
+		5CE08A47189B6A80006C03B9 /* CityInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityInfo.h; sourceTree = "<group>"; };
+		5CE08A48189B6A80006C03B9 /* CityInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +135,10 @@
 				5CA906DE1899FDFE00933025 /* Raw XML */,
 				5CA906AE1898B4AB00933025 /* Main_iPhone.storyboard */,
 				5CA906B11898B4AB00933025 /* Main_iPad.storyboard */,
-				5CA906DF1899FFB000933025 /* Listings.h */,
-				5CA906E01899FFB000933025 /* Listings.m */,
+				5CE08A47189B6A80006C03B9 /* CityInfo.h */,
+				5CE08A48189B6A80006C03B9 /* CityInfo.m */,
+				5CE08A44189B65C7006C03B9 /* XMLManager.h */,
+				5CE08A45189B65C7006C03B9 /* XMLManager.m */,
 				5CA906B71898B4AB00933025 /* Images.xcassets */,
 				5CA906A31898B4AB00933025 /* Supporting Files */,
 			);
@@ -289,8 +294,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CA906E11899FFB000933025 /* Listings.m in Sources */,
 				5CA906DC1898BA7400933025 /* DetailViewController.m in Sources */,
+				5CE08A46189B65C7006C03B9 /* XMLManager.m in Sources */,
+				5CE08A49189B6A80006C03B9 /* CityInfo.m in Sources */,
 				5CA906AD1898B4AB00933025 /* AppDelegate.m in Sources */,
 				5CA906A91898B4AB00933025 /* main.m in Sources */,
 				5CA906F0189B396300933025 /* WebXMLViewController.m in Sources */,

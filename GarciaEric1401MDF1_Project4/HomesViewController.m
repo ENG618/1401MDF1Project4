@@ -34,6 +34,11 @@
 {
     [super viewDidLoad];
     
+    //Creating Array
+    cities = [[NSMutableArray alloc] init];
+    
+    
+    
     //Create URL
     url = [[NSURL alloc] initWithString:@"http://api.trulia.com/webservices.php?library=LocationInfo&function=getCitiesInState&state=FL&apikey=q948yz3we6b6nbrneghkww55"];
     
@@ -78,7 +83,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    //Obtaining documents directory
+    //Obtaining documents directory›
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     NSString *docsDirectory = [paths objectAtIndex:0];
     if (docsDirectory != nil) {
@@ -87,16 +92,6 @@
             [listingData writeToFile:fullpath atomically:YES];
         }
     }
-    /*
-     //Creating the parser
-     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:listingData];
-     if (parser) {
-     
-     [parser setDelegate:self];
-     [parser parse];
-     }
-     */
-    
     
     //Casting XML data to a string
     NSString *requestString = [[NSString alloc] initWithData:listingData encoding:NSASCIIStringEncoding];
@@ -128,9 +123,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [cities count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
