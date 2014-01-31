@@ -25,6 +25,7 @@
 		5CA906D91898BA6000933025 /* HomesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906D81898BA6000933025 /* HomesViewController.m */; };
 		5CA906DC1898BA7400933025 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906DB1898BA7400933025 /* DetailViewController.m */; };
 		5CA906E11899FFB000933025 /* Listings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906E01899FFB000933025 /* Listings.m */; };
+		5CA906F0189B396300933025 /* WebXMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA906EF189B396300933025 /* WebXMLViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		5CA906DB1898BA7400933025 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		5CA906DF1899FFB000933025 /* Listings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listings.h; sourceTree = "<group>"; };
 		5CA906E01899FFB000933025 /* Listings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Listings.m; sourceTree = "<group>"; };
+		5CA906EE189B396300933025 /* WebXMLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebXMLViewController.h; sourceTree = "<group>"; };
+		5CA906EF189B396300933025 /* WebXMLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebXMLViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 			children = (
 				5CA906D41898B69500933025 /* RawXMLViewController.h */,
 				5CA906D51898B69500933025 /* RawXMLViewController.m */,
+				5CA906EE189B396300933025 /* WebXMLViewController.h */,
+				5CA906EF189B396300933025 /* WebXMLViewController.m */,
 			);
 			name = "Raw XML";
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				5CA906DC1898BA7400933025 /* DetailViewController.m in Sources */,
 				5CA906AD1898B4AB00933025 /* AppDelegate.m in Sources */,
 				5CA906A91898B4AB00933025 /* main.m in Sources */,
+				5CA906F0189B396300933025 /* WebXMLViewController.m in Sources */,
 				5CA906D61898B69500933025 /* RawXMLViewController.m in Sources */,
 				5CA906D91898BA6000933025 /* HomesViewController.m in Sources */,
 			);
@@ -508,6 +514,7 @@
 				5CA906D01898B4AB00933025 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5CA906D11898B4AB00933025 /* Build configuration list for PBXNativeTarget "GarciaEric1401MDF1_Project4Tests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +523,7 @@
 				5CA906D31898B4AB00933025 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

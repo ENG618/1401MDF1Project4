@@ -11,7 +11,7 @@
  q948yz3we6b6nbrneghkww55
  Static url:
  http://api.trulia.com/webservices.php?library=LocationInfo&function=getCitiesInState&state=FL&apikey=q948yz3we6b6nbrneghkww55
-*/
+ */
 
 #import "HomesViewController.h"
 
@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     //Create URL
     url = [[NSURL alloc] initWithString:@"http://api.trulia.com/webservices.php?library=LocationInfo&function=getCitiesInState&state=FL&apikey=q948yz3we6b6nbrneghkww55"];
     
@@ -59,10 +59,10 @@
     
     
     
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -78,27 +78,30 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    //Obtaining documents directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    NSString *docsDirectory = [paths objectAtIndex:0];
+    if (docsDirectory != nil) {
+        NSString *fullpath = [[NSString alloc] initWithFormat:@"%@/%@", docsDirectory, @"cities.xml"];
+        if (fullpath != nil) {
+            [listingData writeToFile:fullpath atomically:YES];
+        }
+    }
+    /*
+     //Creating the parser
+     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:listingData];
+     if (parser) {
+     
+     [parser setDelegate:self];
+     [parser parse];
+     }
+     */
+    
+    
+    //Casting XML data to a string
     NSString *requestString = [[NSString alloc] initWithData:listingData encoding:NSASCIIStringEncoding];
     if (requestString != nil) {
-        
-        //Obtaining documents directory
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        if (documentsDirectory != nil) {
-            NSString *fullpath = [[NSString alloc] initWithFormat:@"%@/%@", documentsDirectory, @"cities.xml"];
-            if (fullpath != nil) {
-                [listingData writeToFile:fullpath atomically:YES];
-            }
-        }
-        
-        //Creating the parser
-        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:listingData];
-        if (parser) {
-            
-            [parser setDelegate:self];
-            [parser parse];
-        }
-        
+        //Write XML string to console
         NSLog(@"The XML data is %@", requestString);
     }
     
@@ -141,54 +144,54 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
+ #pragma mark - Navigation
+ 
+ // In a story board-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ 
  */
 
 @end

@@ -27,6 +27,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    NSString *requestString = [[NSString alloc] initWithData:listingData encoding:NSASCIIStringEncoding];
+    if (requestString != nil) {
+        //Write XML string to console
+        myTextView.text = requestString;
+    }
 }
 
 - (void)didReceiveMemoryWarning
