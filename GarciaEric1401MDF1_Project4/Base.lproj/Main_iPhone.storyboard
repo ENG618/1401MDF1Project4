@@ -99,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="1493" y="-213"/>
         </scene>
-        <!--Homes View Controller-->
+        <!--Homes View Controller - Cities in FL-->
         <scene sceneID="Ucf-qS-dAg">
             <objects>
                 <tableViewController id="9br-ka-e8P" customClass="HomesViewController" sceneMemberID="viewController">
@@ -125,7 +125,7 @@
                             <outlet property="delegate" destination="9br-ka-e8P" id="aTC-av-obB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Qyy-N4-8NC"/>
+                    <navigationItem key="navigationItem" title="Cities in FL" id="Qyy-N4-8NC"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Uy-t4-KqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

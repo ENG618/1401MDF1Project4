@@ -43,27 +43,23 @@
         
         //Reciving responce from server
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        
-        //        XMLManager *manager = [XMLManager sharedData];
-        //        if (manager) {
-        //            XMLManager *cityData = manager.cityData;
-        //        }
     }
     
-    //Create instance of XMLManager
-    XMLManager *manager = [XMLManager sharedData];
-    if (manager) {
-        //Create mutableData object
-        NSMutableData *cityData = [manager cityData];
-        
-        //Creating the parser
-        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:cityData];
-        if (parser) {
-            
-            [parser setDelegate:self];
-            [parser parse];
-        }
-    }
+//    //Create instance of XMLManager
+//    XMLManager *manager = [XMLManager sharedData];
+//    //Check Validity
+//    if (manager) {
+//        //Create mutableData object
+//        NSMutableData *cityData = [manager cityData];
+//        
+//        //Creating the parser
+//        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:cityData];
+//        if (parser) {
+//            
+//            [parser setDelegate:self];
+//            [parser parse];
+//        }
+//    }
     
     
     
@@ -76,7 +72,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    if (data != nil) {
+    if (data) {
         //Create instance of XMLManager
         XMLManager *manager = [XMLManager sharedData];
         
@@ -125,9 +121,15 @@
                 //Write XML string to console
                 NSLog(@"The XML data is %@", requestString);
             }
+            //Creating the parser
+            NSXMLParser *parser = [[NSXMLParser alloc] initWithData:cityData];
+            if (parser) {
+                
+                [parser setDelegate:self];
+                [parser parse];
+            }
         }
     }
-    
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
