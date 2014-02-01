@@ -43,10 +43,15 @@
         
         //Reciving responce from server
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-
+        
+        XMLManager *manager = [XMLManager sharedData];
+        if (manager) {
+            XMLManager *cityData = manager.cityData;
+        }
+        
 
         //Create mutableData object
-        listingData = [NSMutableData data];
+        //listingData = [NSMutableData data];
     }
     
     //Create instance of XMLManager
@@ -76,9 +81,14 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     if (data != nil) {
-        
-        // Append data to existing listingData
-        [listingData appendData:data];
+        //Create instance of XMLManager
+        XMLManager *manager = [XMLManager sharedData];
+        if (manager){
+            NSMutableData *cityData = [manager cityData];
+            if (cityData) {
+                [cityData appendData:data];
+            }
+        }
     }
 }
 
@@ -131,12 +141,11 @@
 {
     
     int rows = 0;
-    NSMutableArray *cities =
     //Create instance of XMLManager
     XMLManager *manager = [XMLManager sharedData];
     // Check validity
-    if (manager !=nil) {
-        //NSMutableArray *cities = manager.cities;
+    if (manager) {
+        NSMutableArray *cities = manager.cities;
         rows = cities.count;
     }
     // Return the number of rows in the section.

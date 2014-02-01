@@ -16,9 +16,6 @@
     NSURLRequest *request;
     NSURL *url;
     NSURLConnection *connection;
-    
-    //Data recieved from api
-    NSMutableData *listingData;
 }
 
 @end

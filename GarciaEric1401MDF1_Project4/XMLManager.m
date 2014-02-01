@@ -12,7 +12,7 @@
 @synthesize cityData;
 @synthesize cities;
 
-static XMLManager *_sharedData = nil;
+static XMLManager *_sharedData;
 
 + (XMLManager*)sharedData
 {
