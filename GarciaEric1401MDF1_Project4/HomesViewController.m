@@ -45,21 +45,21 @@
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     }
     
-//    //Create instance of XMLManager
-//    XMLManager *manager = [XMLManager sharedData];
-//    //Check Validity
-//    if (manager) {
-//        //Create mutableData object
-//        NSMutableData *cityData = [manager cityData];
-//        
-//        //Creating the parser
-//        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:cityData];
-//        if (parser) {
-//            
-//            [parser setDelegate:self];
-//            [parser parse];
-//        }
-//    }
+    //    //Create instance of XMLManager
+    //    XMLManager *manager = [XMLManager sharedData];
+    //    //Check Validity
+    //    if (manager) {
+    //        //Create mutableData object
+    //        NSMutableData *cityData = [manager cityData];
+    //
+    //        //Creating the parser
+    //        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:cityData];
+    //        if (parser) {
+    //
+    //            [parser setDelegate:self];
+    //            [parser parse];
+    //        }
+    //    }
     
     
     
@@ -134,7 +134,29 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-    
+    //Crete instance of XMLData
+    XMLManager *manager = [XMLManager sharedData];
+    //Check validityds
+    if (manager) {
+        //Create NSMutableArray
+        NSMutableArray  *cities = [manager cities];
+        if (cities) {
+            if ([elementName isEqualToString:@"city"]) {
+                NSString *cityName = [attributeDict valueForKey:@"name"];
+                NSString *cityID = [attributeDict valueForKey:@"cityId"];
+                NSString *lat = [attributeDict valueForKey:@"latitude"];
+                NSString *lon = [attributeDict valueForKey:@"longitude"];
+                CityInfo *city = [[CityInfo alloc] init];
+                if (city) {
+                    city.cityName = cityName;
+                    city.citID = cityID;
+                    city.lat = lat;
+                    city.lon = lon;
+                    [cities addObject:city];
+                }
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning

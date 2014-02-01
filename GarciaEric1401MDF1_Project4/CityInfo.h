@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface CityInfo : NSObject
+{
+    //NSMutableArray *cities;
+}
 
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSString *citID;
 @property (nonatomic, strong) NSString *lat;
-@property (nonatomic, strong) NSString *log;
+@property (nonatomic, strong) NSString *lon;
 
 @end
