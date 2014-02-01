@@ -14,7 +14,7 @@
 }
 
 @property (nonatomic, strong) NSString *cityName;
-@property (nonatomic, strong) NSString *citID;
+@property (nonatomic, strong) NSString *cityID;
 @property (nonatomic, strong) NSString *lat;
 @property (nonatomic, strong) NSString *lon;
 

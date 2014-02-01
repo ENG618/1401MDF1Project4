@@ -16,6 +16,8 @@
     NSURLRequest *request;
     NSURL *url;
     NSURLConnection *connection;
+    
+    NSMutableString *currentCity;
 }
 
 @end

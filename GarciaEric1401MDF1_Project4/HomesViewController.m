@@ -132,6 +132,11 @@
     }
 }
 
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    currentCity = (NSMutableString*) [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
     //Crete instance of XMLData
@@ -142,14 +147,21 @@
         NSMutableArray  *cities = [manager cities];
         if (cities) {
             if ([elementName isEqualToString:@"city"]) {
+                NSLog(@"The current cityID is %@", currentCity );
+                
+                if ([elementName isEqualToString:@"name"]) {
+                    NSLog(@"this is the element name");
+                }
+                
                 NSString *cityName = [attributeDict valueForKey:@"name"];
+                NSLog(@"City Name = %@", cityName);
                 NSString *cityID = [attributeDict valueForKey:@"cityId"];
                 NSString *lat = [attributeDict valueForKey:@"latitude"];
                 NSString *lon = [attributeDict valueForKey:@"longitude"];
                 CityInfo *city = [[CityInfo alloc] init];
                 if (city) {
                     city.cityName = cityName;
-                    city.citID = cityID;
+                    city.cityID = cityID;
                     city.lat = lat;
                     city.lon = lon;
                     [cities addObject:city];
@@ -157,6 +169,11 @@
             }
         }
     }
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -194,6 +211,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    //Create instance of singleton
+    XMLManager *manager = [XMLManager sharedData];
+    //Check validity
+    if (manager) {
+        NSMutableArray *cities = [manager cities];
+        if (cities) {
+        CityInfo *current = [cities objectAtIndex:indexPath.row];
+        cell.textLabel.text = [current cityName];
+        cell.detailTextLabel.text = [current cityID];
+        }
+    }
+    
     
     return cell;
 }
