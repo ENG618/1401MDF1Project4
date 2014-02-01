@@ -44,14 +44,10 @@
         //Reciving responce from server
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         
-        XMLManager *manager = [XMLManager sharedData];
-        if (manager) {
-            XMLManager *cityData = manager.cityData;
-        }
-        
-
-        //Create mutableData object
-        //listingData = [NSMutableData data];
+        //        XMLManager *manager = [XMLManager sharedData];
+        //        if (manager) {
+        //            XMLManager *cityData = manager.cityData;
+        //        }
     }
     
     //Create instance of XMLManager
@@ -83,9 +79,14 @@
     if (data != nil) {
         //Create instance of XMLManager
         XMLManager *manager = [XMLManager sharedData];
+        
+        //Check Validity
         if (manager){
+            //Create MutableData object or a reference to it
             NSMutableData *cityData = [manager cityData];
+            //Check Validity
             if (cityData) {
+                //Append incoming data to MutableData object
                 [cityData appendData:data];
             }
         }
@@ -94,26 +95,37 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-/*
-    //This code is not fuctioning proporlly and does not save to file
-    //Save to file is not nessisary for project4
+    /*
+     //This code is not fuctioning proporlly and does not save to file
+     //Save to file is not nessisary for project4
+     
+     //Obtaining documents directory›
+     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+     NSString *docsDirectory = [paths objectAtIndex:0];
+     if (docsDirectory != nil) {
+     NSString *fullpath = [[NSString alloc] initWithFormat:@"%@/%@", docsDirectory, @"cities.xml"];
+     if (fullpath != nil) {
+     [listingData writeToFile:fullpath atomically:YES];
+     }
+     }
+     */
     
-    //Obtaining documents directory›
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-    NSString *docsDirectory = [paths objectAtIndex:0];
-    if (docsDirectory != nil) {
-        NSString *fullpath = [[NSString alloc] initWithFormat:@"%@/%@", docsDirectory, @"cities.xml"];
-        if (fullpath != nil) {
-            [listingData writeToFile:fullpath atomically:YES];
+    //Create instance of XMLManager
+    XMLManager *manager = [XMLManager sharedData];
+    //Checking validity
+    if (manager) {
+        //Creating instance of MutableData
+        NSMutableData *cityData = [manager cityData];
+        //Checking validity
+        if (cityData) {
+            //Casting XML data to a string
+            NSString *requestString = [[NSString alloc] initWithData:cityData encoding:NSASCIIStringEncoding];
+            //Checking validity
+            if (requestString) {
+                //Write XML string to console
+                NSLog(@"The XML data is %@", requestString);
+            }
         }
-    } 
-*/
-    
-    //Casting XML data to a string
-    NSString *requestString = [[NSString alloc] initWithData:listingData encoding:NSASCIIStringEncoding];
-    if (requestString != nil) {
-        //Write XML string to console
-        NSLog(@"The XML data is %@", requestString);
     }
     
 }
