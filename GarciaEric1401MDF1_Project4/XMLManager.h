@@ -11,10 +11,12 @@
 @interface XMLManager : NSObject
 {
     NSMutableData *cityData;
+    NSMutableArray *cities;
 }
 
 + (XMLManager*)sharedData;
 
 @property (nonatomic, strong)NSMutableData *cityData;
+@property (nonatomic, strong)NSMutableArray *cities;
 
 @end

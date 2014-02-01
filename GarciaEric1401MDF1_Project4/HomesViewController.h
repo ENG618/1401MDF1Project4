@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XMLManager.h"
+#import "DetailViewController.h"
 #import "CityInfo.h"
+#import "XMLManager.h"
 
 @interface HomesViewController : UITableViewController <NSURLConnectionDataDelegate, NSXMLParserDelegate>
 {
@@ -18,8 +19,6 @@
     
     //Data recieved from api
     NSMutableData *listingData;
-    //Array of objects after parsing
-    NSMutableArray *cities;
 }
 
 @end

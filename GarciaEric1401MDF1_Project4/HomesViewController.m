@@ -34,11 +34,6 @@
 {
     [super viewDidLoad];
     
-    //Creating Array
-    cities = [[NSMutableArray alloc] init];
-    
-    
-    
     //Create URL
     url = [[NSURL alloc] initWithString:@"http://api.trulia.com/webservices.php?library=LocationInfo&function=getCitiesInState&state=FL&apikey=q948yz3we6b6nbrneghkww55"];
     
@@ -48,20 +43,26 @@
         
         //Reciving responce from server
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        
+
+
         //Create mutableData object
         listingData = [NSMutableData data];
     }
     
-    //Creating the parser
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:listingData];
-    if (parser) {
+    //Create instance of XMLManager
+    XMLManager *manager = [XMLManager sharedData];
+    if (manager) {
+        //Create mutableData object
+        NSMutableData *cityData = [manager cityData];
         
-        [parser setDelegate:self];
-        [parser parse];
+        //Creating the parser
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:cityData];
+        if (parser) {
+            
+            [parser setDelegate:self];
+            [parser parse];
+        }
     }
-    
-    
     
     
     
@@ -83,6 +84,10 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+/*
+    //This code is not fuctioning proporlly and does not save to file
+    //Save to file is not nessisary for project4
+    
     //Obtaining documents directory›
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     NSString *docsDirectory = [paths objectAtIndex:0];
@@ -91,7 +96,8 @@
         if (fullpath != nil) {
             [listingData writeToFile:fullpath atomically:YES];
         }
-    }
+    } 
+*/
     
     //Casting XML data to a string
     NSString *requestString = [[NSString alloc] initWithData:listingData encoding:NSASCIIStringEncoding];
@@ -123,8 +129,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+    int rows = 0;
+    NSMutableArray *cities =
+    //Create instance of XMLManager
+    XMLManager *manager = [XMLManager sharedData];
+    // Check validity
+    if (manager !=nil) {
+        //NSMutableArray *cities = manager.cities;
+        rows = cities.count;
+    }
     // Return the number of rows in the section.
-    return [cities count];
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

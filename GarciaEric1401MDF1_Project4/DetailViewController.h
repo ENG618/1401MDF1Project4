@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomesViewController.h"
+#import "XMLManager.h"
 
 @interface DetailViewController : UIViewController
 

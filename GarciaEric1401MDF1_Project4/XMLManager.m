@@ -10,6 +10,7 @@
 
 @implementation XMLManager
 @synthesize cityData;
+@synthesize cities;
 
 static XMLManager *_sharedData = nil;
 
@@ -25,6 +26,7 @@ static XMLManager *_sharedData = nil;
 {
     if ((self = [super init])) {
         cityData = [[NSMutableData alloc] init];
+        cities = [[NSMutableArray alloc] init];
     }
     return self;
 }
