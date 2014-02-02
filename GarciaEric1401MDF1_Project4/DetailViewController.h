@@ -12,4 +12,10 @@
 
 @interface DetailViewController : UIViewController
 
+
+@property (nonatomic, strong) NSString *cityName;
+@property (nonatomic, strong) NSString *cityId;
+@property (nonatomic, strong) NSString *cityLat;
+@property (nonatomic, strong) NSString *cityLon;
+
 @end

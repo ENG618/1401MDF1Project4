@@ -153,9 +153,9 @@
             return;
         }
         else if ([elementName isEqualToString:@"city"]){
-        //Create custum object
-        CityInfo *city = [[CityInfo alloc] initWithName:tempName cityId:tempID cityLat:tempLat cityLon:tempLon];
-        [manager.cities addObject:city];
+            //Create custum object
+            CityInfo *city = [[CityInfo alloc] initWithName:tempName cityId:tempID cityLat:tempLat cityLon:tempLon];
+            [manager.cities addObject:city];
             [self.tableView reloadData];
         }
     }
@@ -251,16 +251,27 @@
  }
  */
 
-/*
- #pragma mark - Navigation
- 
- // In a story board-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- 
- */
+
+#pragma mark - Navigation
+
+// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    XMLManager *manager = [XMLManager sharedData];
+    //Check validity
+    if (manager) {
+        
+        // Get the new view controller using [segue destinationViewController].
+        DetailViewController *dvc = [segue destinationViewController];
+        // Pass the selected object to the new view controller.
+        //obtain path for selected row
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        CityInfo *c = [manager.cities objectAtIndex:path.row];
+        dvc.cityId = c.cityID;
+        dvc.cityName = c.cityName;
+        dvc.cityLon = c.lon;
+        dvc.cityLat = c.lat;
+    }
+}
 
 @end

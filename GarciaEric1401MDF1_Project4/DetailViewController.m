@@ -31,6 +31,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.cityID.text = self.cityId;
+    self.city.text = self.cityName;
+    self.lat.text = self.cityLat;
+    self.lon.text = self.cityLon;
 }
 
 - (void)didReceiveMemoryWarning
