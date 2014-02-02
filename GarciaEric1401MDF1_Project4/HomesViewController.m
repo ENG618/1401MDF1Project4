@@ -153,6 +153,7 @@
                     NSLog(@"this is the element name");
                 }
                 
+                //NSString * name = ;
                 NSString *cityName = [attributeDict valueForKey:@"name"];
                 NSLog(@"City Name = %@", cityName);
                 NSString *cityID = [attributeDict valueForKey:@"cityId"];
@@ -173,7 +174,11 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    
+    if ([elementName isEqualToString:@"cityId"]) {
+        //NSString *cityID = [attributeDict valueForKey:@"cityId"];
+        [currentCity setValue:currentCity forKey:elementName];
+        NSLog(@"The cities id is %@", currentCity);
+    }
 }
 
 - (void)didReceiveMemoryWarning

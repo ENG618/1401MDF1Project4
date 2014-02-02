@@ -135,10 +135,7 @@
 				5CA906DE1899FDFE00933025 /* Raw XML */,
 				5CA906AE1898B4AB00933025 /* Main_iPhone.storyboard */,
 				5CA906B11898B4AB00933025 /* Main_iPad.storyboard */,
-				5CE08A47189B6A80006C03B9 /* CityInfo.h */,
-				5CE08A48189B6A80006C03B9 /* CityInfo.m */,
-				5CE08A44189B65C7006C03B9 /* XMLManager.h */,
-				5CE08A45189B65C7006C03B9 /* XMLManager.m */,
+				5CBB2F39189DF339003BA7F7 /* Custom objects */,
 				5CA906B71898B4AB00933025 /* Images.xcassets */,
 				5CA906A31898B4AB00933025 /* Supporting Files */,
 			);
@@ -194,6 +191,17 @@
 				5CA906EF189B396300933025 /* WebXMLViewController.m */,
 			);
 			name = "Raw XML";
+			sourceTree = "<group>";
+		};
+		5CBB2F39189DF339003BA7F7 /* Custom objects */ = {
+			isa = PBXGroup;
+			children = (
+				5CE08A47189B6A80006C03B9 /* CityInfo.h */,
+				5CE08A48189B6A80006C03B9 /* CityInfo.m */,
+				5CE08A44189B65C7006C03B9 /* XMLManager.h */,
+				5CE08A45189B65C7006C03B9 /* XMLManager.m */,
+			);
+			name = "Custom objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

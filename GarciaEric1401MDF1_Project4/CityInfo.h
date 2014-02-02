@@ -10,8 +10,13 @@
 
 @interface CityInfo : NSObject
 {
-    //NSMutableArray *cities;
+    NSString *cityName;
+    NSString *cityID;
+    NSString *lat;
+    NSString *lon;
 }
+
+- (id)initWithName:(NSString*)name cityId:(NSString*)cityId cityLat:(NSString*)latitude cityLon:(NSString*)longitude;
 
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSString *cityID;
