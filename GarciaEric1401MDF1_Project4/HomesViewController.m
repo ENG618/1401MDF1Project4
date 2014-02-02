@@ -45,24 +45,6 @@
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     }
     
-    //    //Create instance of XMLManager
-    //    XMLManager *manager = [XMLManager sharedData];
-    //    //Check Validity
-    //    if (manager) {
-    //        //Create mutableData object
-    //        NSMutableData *cityData = [manager cityData];
-    //
-    //        //Creating the parser
-    //        NSXMLParser *parser = [[NSXMLParser alloc] initWithData:cityData];
-    //        if (parser) {
-    //
-    //            [parser setDelegate:self];
-    //            [parser parse];
-    //        }
-    //    }
-    
-    
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -91,6 +73,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    
     /*
      //This code is not fuctioning proporlly and does not save to file
      //Save to file is not nessisary for project4
@@ -134,7 +117,8 @@
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    currentCity = (NSMutableString*) [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    currentTagStr = (NSMutableString*) [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSLog(@"found Characters...parsing string %@", currentTagStr);
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
@@ -146,27 +130,24 @@
         //Create NSMutableArray
         NSMutableArray  *cities = [manager cities];
         if (cities) {
-            if ([elementName isEqualToString:@"city"]) {
-                NSLog(@"The current cityID is %@", currentCity );
-                
-                if ([elementName isEqualToString:@"name"]) {
-                    NSLog(@"this is the element name");
-                }
-                
-                //NSString * name = ;
-                NSString *cityName = [attributeDict valueForKey:@"name"];
-                NSLog(@"City Name = %@", cityName);
-                NSString *cityID = [attributeDict valueForKey:@"cityId"];
-                NSString *lat = [attributeDict valueForKey:@"latitude"];
-                NSString *lon = [attributeDict valueForKey:@"longitude"];
-                CityInfo *city = [[CityInfo alloc] init];
-                if (city) {
-                    city.cityName = cityName;
-                    city.cityID = cityID;
-                    city.lat = lat;
-                    city.lon = lon;
-                    [cities addObject:city];
-                }
+            if ([elementName isEqualToString:@"name"]) {
+                //NSLog(@"The current name is %@", currentTagStr );
+                /*
+                 //NSString * name = ;
+                 NSString *cityName = [attributeDict valueForKey:@"name"];
+                 NSLog(@"City Name = %@", cityName);
+                 NSString *cityID = [attributeDict valueForKey:@"cityId"];
+                 NSString *lat = [attributeDict valueForKey:@"latitude"];
+                 NSString *lon = [attributeDict valueForKey:@"longitude"];
+                 CityInfo *city = [[CityInfo alloc] init];
+                 if (city) {
+                 city.cityName = cityName;
+                 city.cityID = cityID;
+                 city.lat = lat;
+                 city.lon = lon;
+                 [cities addObject:city];
+                 }
+                 */
             }
         }
     }
@@ -174,10 +155,22 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    if ([elementName isEqualToString:@"cityId"]) {
-        //NSString *cityID = [attributeDict valueForKey:@"cityId"];
-        [currentCity setValue:currentCity forKey:elementName];
-        NSLog(@"The cities id is %@", currentCity);
+    //Chreating instance of XMLManager
+    XMLManager *manager = [XMLManager sharedData];
+    //Checking validity
+    if (manager) {
+        if ([elementName isEqualToString:@"cityId"]) {
+            NSLog(@"The cities id is %@", currentTagStr);
+        }
+        else if ([elementName isEqualToString:@"name"]) {
+            NSLog(@"city name is %@", currentTagStr);
+        }
+        else if ([elementName isEqualToString:@"latitude"]) {
+            NSLog(@"The Latitude is %@", currentTagStr);
+        }
+        else if ([elementName isEqualToString:@"longitude"]) {
+            NSLog(@"The longitude is %@", currentTagStr);
+        }
     }
 }
 
@@ -222,9 +215,9 @@
     if (manager) {
         NSMutableArray *cities = [manager cities];
         if (cities) {
-        CityInfo *current = [cities objectAtIndex:indexPath.row];
-        cell.textLabel.text = [current cityName];
-        cell.detailTextLabel.text = [current cityID];
+            CityInfo *current = [cities objectAtIndex:indexPath.row];
+            cell.textLabel.text = [current cityName];
+            cell.detailTextLabel.text = [current cityID];
         }
     }
     

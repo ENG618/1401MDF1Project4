@@ -17,7 +17,7 @@
     NSURL *url;
     NSURLConnection *connection;
     
-    NSMutableString *currentCity;
+    NSMutableString *currentTagStr;
 }
 
 @end
