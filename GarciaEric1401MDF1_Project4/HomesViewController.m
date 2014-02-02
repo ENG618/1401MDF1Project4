@@ -123,34 +123,7 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-    //Crete instance of XMLData
-    XMLManager *manager = [XMLManager sharedData];
-    //Check validityds
-    if (manager) {
-        //Create NSMutableArray
-        NSMutableArray  *cities = [manager cities];
-        if (cities) {
-            //if ([elementName isEqualToString:@"name"]) {
-                //NSLog(@"The current name is %@", currentTagStr );
-                /*
-                 //NSString * name = ;
-                 NSString *cityName = [attributeDict valueForKey:@"name"];
-                 NSLog(@"City Name = %@", cityName);
-                 NSString *cityID = [attributeDict valueForKey:@"cityId"];
-                 NSString *lat = [attributeDict valueForKey:@"latitude"];
-                 NSString *lon = [attributeDict valueForKey:@"longitude"];
-                 CityInfo *city = [[CityInfo alloc] init];
-                 if (city) {
-                 city.cityName = cityName;
-                 city.cityID = cityID;
-                 city.lat = lat;
-                 city.lon = lon;
-                 [cities addObject:city];
-                 }
-                 */
-            //}
-        }
-    }
+    
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
@@ -159,10 +132,6 @@
     XMLManager *manager = [XMLManager sharedData];
     //Checking validity
     if (manager) {
-        tempID = nil;
-        tempName = nil;
-        tempLat = nil;
-        tempLon = nil;
         if ([elementName isEqualToString:@"cityId"]) {
             NSLog(@"The cities id is %@", currentTagStr);
             tempID = currentTagStr;
@@ -173,19 +142,22 @@
             tempName = currentTagStr;
             return;
         }
-        else if ([elementName isEqualToString:@"latitude"]) {
-            NSLog(@"The Latitude is %@", currentTagStr);
-            tempLat = currentTagStr;
-            return;
-        }
         else if ([elementName isEqualToString:@"longitude"]) {
             NSLog(@"The longitude is %@", currentTagStr);
             tempLon = currentTagStr;
             return;
         }
+        else if ([elementName isEqualToString:@"latitude"]) {
+            NSLog(@"The Latitude is %@", currentTagStr);
+            tempLat = currentTagStr;
+            return;
+        }
+        else if ([elementName isEqualToString:@"city"]){
         //Create custum object
         CityInfo *city = [[CityInfo alloc] initWithName:tempName cityId:tempID cityLat:tempLat cityLon:tempLon];
         [manager.cities addObject:city];
+            [self.tableView reloadData];
+        }
     }
 }
 
