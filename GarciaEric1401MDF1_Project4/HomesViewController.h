@@ -18,6 +18,10 @@
     NSURLConnection *connection;
     
     NSMutableString *currentTagStr;
+    NSString *tempID;
+    NSString *tempName;
+    NSString *tempLon;
+    NSString *tempLat;
 }
 
 @end

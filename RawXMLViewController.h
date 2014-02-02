@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XMLManager.h"
 
 @interface RawXMLViewController : UIViewController
 {
     IBOutlet UITextView *myTextView;
-    //Data recieved from api
-    NSMutableData *listingData;
 }
 
 @end

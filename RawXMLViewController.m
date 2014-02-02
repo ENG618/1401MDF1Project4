@@ -27,11 +27,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    NSString *requestString = [[NSString alloc] initWithData:listingData encoding:NSASCIIStringEncoding];
-    if (requestString != nil) {
-        //Write XML string to console
-        myTextView.text = @"Hello World!";
+
+    //Create instance of XMLManager
+    XMLManager *manager = [XMLManager sharedData];
+    //Checking validity
+    if (manager) {
+        //Creating instance of MutableData
+        NSMutableData *cityData = [manager cityData];
+        //Checking validity
+        if (cityData) {
+            //Casting XML data to a string
+            NSString *requestString = [[NSString alloc] initWithData:cityData encoding:NSASCIIStringEncoding];
+            //Checking validity
+            if (requestString) {
+                myTextView.text = requestString;
+                //Write XML string to console
+                NSLog(@"The XML data is %@", requestString);
+            }
+        }
     }
 }
 

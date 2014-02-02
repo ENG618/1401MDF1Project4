@@ -130,7 +130,7 @@
         //Create NSMutableArray
         NSMutableArray  *cities = [manager cities];
         if (cities) {
-            if ([elementName isEqualToString:@"name"]) {
+            //if ([elementName isEqualToString:@"name"]) {
                 //NSLog(@"The current name is %@", currentTagStr );
                 /*
                  //NSString * name = ;
@@ -148,7 +148,7 @@
                  [cities addObject:city];
                  }
                  */
-            }
+            //}
         }
     }
 }
@@ -159,18 +159,33 @@
     XMLManager *manager = [XMLManager sharedData];
     //Checking validity
     if (manager) {
+        tempID = nil;
+        tempName = nil;
+        tempLat = nil;
+        tempLon = nil;
         if ([elementName isEqualToString:@"cityId"]) {
             NSLog(@"The cities id is %@", currentTagStr);
+            tempID = currentTagStr;
+            return;
         }
         else if ([elementName isEqualToString:@"name"]) {
-            NSLog(@"city name is %@", currentTagStr);
+            NSLog(@"The city name is %@", currentTagStr);
+            tempName = currentTagStr;
+            return;
         }
         else if ([elementName isEqualToString:@"latitude"]) {
             NSLog(@"The Latitude is %@", currentTagStr);
+            tempLat = currentTagStr;
+            return;
         }
         else if ([elementName isEqualToString:@"longitude"]) {
             NSLog(@"The longitude is %@", currentTagStr);
+            tempLon = currentTagStr;
+            return;
         }
+        //Create custum object
+        CityInfo *city = [[CityInfo alloc] initWithName:tempName cityId:tempID cityLat:tempLat cityLon:tempLon];
+        [manager.cities addObject:city];
     }
 }
 
