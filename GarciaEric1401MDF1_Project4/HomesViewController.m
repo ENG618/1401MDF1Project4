@@ -74,20 +74,11 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     
-    /*
+
      //This code is not fuctioning proporlly and does not save to file
      //Save to file is not nessisary for project4
      
-     //Obtaining documents directory›
-     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-     NSString *docsDirectory = [paths objectAtIndex:0];
-     if (docsDirectory != nil) {
-     NSString *fullpath = [[NSString alloc] initWithFormat:@"%@/%@", docsDirectory, @"cities.xml"];
-     if (fullpath != nil) {
-     [listingData writeToFile:fullpath atomically:YES];
-     }
-     }
-     */
+
     
     //Create instance of XMLManager
     XMLManager *manager = [XMLManager sharedData];
@@ -97,6 +88,17 @@
         NSMutableData *cityData = [manager cityData];
         //Checking validity
         if (cityData) {
+            
+            //Obtaining documents directory›
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *docsDirectory = [paths objectAtIndex:0];
+            if (docsDirectory != nil) {
+                NSString *fullpath = [[NSString alloc] initWithFormat:@"%@/%@", docsDirectory, @"cities.xml"];
+                if (fullpath != nil) {
+                    [cityData writeToFile:fullpath atomically:YES];
+                }
+            }
+            
             //Casting XML data to a string
             NSString *requestString = [[NSString alloc] initWithData:cityData encoding:NSASCIIStringEncoding];
             //Checking validity
